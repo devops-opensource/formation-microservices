@@ -11,6 +11,7 @@ import java.time.LocalDate;
 import java.util.List;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cloud.client.loadbalancer.reactive.ReactorLoadBalancerExchangeFilterFunction;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
@@ -30,9 +31,9 @@ public class GameService {
   private ObservationRegistry observationRegistry;
 
   private Mono<List<Team>> teamClient() {
-    Observation observation = Observation.start("playerWebClient", observationRegistry);
+    Observation observation = Observation.start("teamWebClient", observationRegistry);
     return Mono.just(observation).flatMap(span -> {
-          observation.scoped(() -> log.info("<ACCEPTANCE_TEST> <TRACE:{}> get players from player-api",
+          observation.scoped(() -> log.info("<ACCEPTANCE_TEST> <TRACE:{}> get teams from team-api",
               this.tracer.currentSpan().context().traceId()));
           return this.teamWebClient.get().retrieve().bodyToMono(new ParameterizedTypeReference<List<Team>>() {});
         })

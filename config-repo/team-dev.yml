@@ -1,3 +1,0 @@
-client:
-  player:
-    uri: http://localhost:8081/api/v1/player

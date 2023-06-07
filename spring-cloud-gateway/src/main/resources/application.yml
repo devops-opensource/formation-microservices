@@ -1,37 +1,45 @@
 spring:
   application:
     name: spring-cloud-gateway
+    cloud:
+      gateway:
+      discovery:
+        locator:
+          enabled: true
+
   config:
     import: 'optional:configserver:http://localhost:8888/'
   cloud:
     gateway:
       routes:
         - id: player-api
-          uri: http://localhost:8081
+          uri: lb://player
           predicates:
             - Path=/api/v1/player
         - id: team-api
-          uri: http://localhost:8082
+          uri: lb://team
           predicates:
             - Path=/api/v1/team
         - id: game-api
-          uri: http://localhost:8083
+          uri: lb://game
           predicates:
             - Path=/api/v1/game
-
+          filters:
+            - AddRequestHeader=X-Request-Game, gameMoreInfo
 management:
+  endpoint:
+    gateway:
+      enabled: true
   endpoints:
     web:
       exposure:
         include: '*'
-
-  management:
-    tracing:
-      sampling:
-        probability: 1.0
-    output:
-      ansi:
-        enabled: always
+  tracing:
+    sampling:
+      probability: 1.0
+  output:
+    ansi:
+      enabled: always
 
 logging:
   level:

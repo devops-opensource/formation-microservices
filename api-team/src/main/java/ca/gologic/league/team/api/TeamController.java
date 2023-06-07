@@ -5,7 +5,9 @@ import ca.gologic.league.team.service.TeamService;
 import java.util.List;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -17,9 +19,13 @@ public class TeamController {
   @Autowired
   private TeamService teamService;
 
+  @Value("${server.instance.id}")
+  String instanceId;
+
   @GetMapping
-  public List<Team> getPlayers() {
-    log.info("Get all team");
+  public List<Team> getPlayers(@RequestHeader(name = "X-Request-Game", defaultValue = "filter failed") String extraInfo) {
+    log.info("Get all team instance {}", instanceId);
+    log.info("Game obtained a header {} with value {}", "X-Request-Game", extraInfo);
     return teamService.getTeams();
   }
 

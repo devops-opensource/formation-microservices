@@ -2,6 +2,8 @@ package ca.gologic.league.team.api;
 
 import ca.gologic.league.team.domain.Team;
 import ca.gologic.league.team.service.TeamService;
+import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
+import java.util.ArrayList;
 import java.util.List;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,5 +30,4 @@ public class TeamController {
     log.info("Game obtained a header {} with value {}", "X-Request-Game", extraInfo);
     return teamService.getTeams();
   }
-
 }

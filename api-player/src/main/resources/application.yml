@@ -1,0 +1,36 @@
+server:
+  port: '8081'
+  instance:
+    id: player-1
+spring:
+  application:
+    name: player
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: https://microservices-learn.us.auth0.com/
+  output:
+    ansi:
+      enabled: always
+  config:
+    import: optional:configserver:http://localhost:8888/
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  tracing:
+    sampling:
+      probability: '1.0'
+logging:
+  level:
+    org:
+      springframework:
+        web:
+          servlet:
+            DispatcherServlet: INFO
+  pattern:
+    level: '%5p [${spring.application.name:},%X{traceId:-},%X{spanId:-}]'
+
+message: A local value

@@ -8,6 +8,7 @@ import java.util.List;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -28,6 +29,7 @@ public class PlayerController {
   String instanceId;
 
   @GetMapping
+  @PreAuthorize("hasAuthority('SCOPE_read:player')")
   public List<Player> getPlayers(@RequestHeader(name = "X-Request-Game", defaultValue = "filter failed") String extraInfo) {
     log.info("Get all player instance {}", instanceId);
     log.info("Game obtained a header {} with value {}", "X-Request-Game", extraInfo);

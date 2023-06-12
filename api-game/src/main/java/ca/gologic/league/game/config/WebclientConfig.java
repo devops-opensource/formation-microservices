@@ -10,21 +10,11 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.web.reactive.function.client.WebClient;
 
 @Configuration
-//@LoadBalancerClient(name = "team-api", configuration = ServerInstanceConfiguration.class)
 public class WebclientConfig {
-
-  @Autowired
-  private ReactorLoadBalancerExchangeFilterFunction lbFunction;
-
-//  @Bean
-//  @LoadBalanced
-//  WebClient teamWebClient(WebClient.Builder builder, @Value("${client.team.alias}") String url) {
-//    return builder.filter(lbFunction).baseUrl(url).build();
-//  }
 
   @Bean
   WebClient teamWebClient(WebClient.Builder builder, @Value("${client.team.uri}") String url) {
-    return builder.filter(lbFunction).baseUrl(url).build();
+    return builder.baseUrl(url).build();
   }
 
 }

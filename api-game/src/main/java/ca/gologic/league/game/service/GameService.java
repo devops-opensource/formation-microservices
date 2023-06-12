@@ -11,7 +11,6 @@ import java.time.LocalDate;
 import java.util.List;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cloud.client.loadbalancer.reactive.ReactorLoadBalancerExchangeFilterFunction;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
@@ -41,6 +40,8 @@ public class GameService {
         .contextWrite(context -> context.put(ObservationThreadLocalAccessor.KEY, observation));
   }
 
+
+
   public List<Game> getGames() {
     List<Team> teams = teamClient().block();
     assert teams != null;
@@ -64,7 +65,7 @@ public class GameService {
         visitorPoint);
   }
 
-  private static int getPointForTeam(Team local) {
-    return local.getPlayers().stream().mapToInt(Player::getGoal).sum();
+  private static int getPointForTeam(Team team) {
+    return team.getPlayers().stream().mapToInt(Player::getGoal).sum();
   }
 }

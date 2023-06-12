@@ -1,0 +1,258 @@
+{
+	"info": {
+		"_postman_id": "92b10169-6665-4ade-b7f0-d3d85d79fdbe",
+		"name": "Player API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "492351"
+	},
+	"item": [
+		{
+			"name": "Actuator health",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081/actuator/health",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"actuator",
+						"health"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Actuator env",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081/actuator/env",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"actuator",
+						"env"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get message",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081/api/v1/player/message",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"v1",
+						"player",
+						"message"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get all player secure",
+			"request": {
+				"auth": {
+					"type": "oauth2",
+					"oauth2": [
+						{
+							"key": "accessTokenUrl",
+							"value": "https://microservices-learn.us.auth0.com/oauth/token",
+							"type": "string"
+						},
+						{
+							"key": "tokenRequestParams",
+							"value": [
+								{
+									"key": "audience",
+									"value": "https://league.gologic.ca",
+									"enabled": true,
+									"send_as": "request_body"
+								}
+							],
+							"type": "any"
+						},
+						{
+							"key": "clientSecret",
+							"value": "I-RCwy48te62DVevwd6Uuv0yLBTdZRnvvm2fcENUF-KTDYHB8fldWBQZLDYjt-Wj",
+							"type": "string"
+						},
+						{
+							"key": "clientId",
+							"value": "QuH1NCn9kOLd7RjsdTq1nDrAHCdwTFg3",
+							"type": "string"
+						},
+						{
+							"key": "tokenName",
+							"value": "Auth0",
+							"type": "string"
+						},
+						{
+							"key": "tokenType",
+							"value": "Bearer",
+							"type": "string"
+						},
+						{
+							"key": "refresh_token",
+							"type": "any"
+						},
+						{
+							"key": "expires_in",
+							"value": "3599",
+							"type": "string"
+						},
+						{
+							"key": "token_id",
+							"value": "dfb31be1-f46f-4f8d-af20-d90115c934b4",
+							"type": "string"
+						},
+						{
+							"key": "timestamp",
+							"value": 1679414395465,
+							"type": "number"
+						},
+						{
+							"key": "grant_type",
+							"value": "client_credentials",
+							"type": "string"
+						},
+						{
+							"key": "password",
+							"value": "Haidar123",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "haidar.dahnoun@gologic.ca",
+							"type": "string"
+						},
+						{
+							"key": "addTokenTo",
+							"value": "header",
+							"type": "string"
+						},
+						{
+							"key": "id",
+							"value": "request/3bde1f0b-7e79-42a4-bcf8-d4b157dc55b0/0b84e567-b8fe-40a1-81ad-0ede074c1b9d",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081/api/v1/player/sec",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"v1",
+						"player",
+						"sec"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get all player",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081/api/v1/player",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"v1",
+						"player"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Put player",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "    {\r\n        \"id\": 1,\r\n        \"name\": \"Sidney Crosby\",\r\n        \"age\": 32,\r\n        \"goal\": 1\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/api/v1/player",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"v1",
+						"player"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get all player",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081/api/v1/player",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"v1",
+						"player"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

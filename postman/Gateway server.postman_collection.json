@@ -1,0 +1,31 @@
+{
+	"info": {
+		"_postman_id": "c1c99262-413e-402a-b0b3-335b7433b74d",
+		"name": "Gateway server",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "492351"
+	},
+	"item": [
+		{
+			"name": "Get routes",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/actuator/gateway/routes",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"actuator",
+						"gateway",
+						"routes"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

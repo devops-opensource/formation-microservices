@@ -1,0 +1,70 @@
+{
+	"info": {
+		"_postman_id": "de17e1ff-8ece-4c02-8652-694a9558450c",
+		"name": "Discovery Client",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "492351"
+	},
+	"item": [
+		{
+			"name": "Get service instance player",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8090/service-instance/player",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8090",
+					"path": [
+						"service-instance",
+						"player"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get service instance team",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8090/service-instance/team",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8090",
+					"path": [
+						"service-instance",
+						"team"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get service instance game",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8090/service-instance/game",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8090",
+					"path": [
+						"service-instance",
+						"game"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

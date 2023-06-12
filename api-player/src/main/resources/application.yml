@@ -50,6 +50,7 @@ logging:
 
 
 message: A local value
-
+db:
+  password: 'password en clair'
 
 

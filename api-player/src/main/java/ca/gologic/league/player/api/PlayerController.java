@@ -2,13 +2,10 @@ package ca.gologic.league.player.api;
 
 import ca.gologic.league.player.domain.Player;
 import ca.gologic.league.player.service.PlayerService;
-import jakarta.servlet.http.HttpServletRequest;
-import java.util.Enumeration;
 import java.util.List;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -27,6 +24,9 @@ public class PlayerController {
   @Value("${message}")
   private String message;
 
+  @Value("${db.password}")
+  private String password;
+
   @Value("${server.instance.id}")
   String instanceId;
 
@@ -37,15 +37,6 @@ public class PlayerController {
     return playerService.getPlayers();
   }
 
-  @GetMapping("sec")
-  @PreAuthorize("hasAuthority('SCOPE_read:player')")
-  public List<Player> getPlayersSecure(@RequestHeader(name = "X-Request-Game", defaultValue = "filter failed") String extraInfo) {
-    log.info("Get all player instance {}", instanceId);
-    log.info("Game obtained a header {} with value {}", "X-Request-Game", extraInfo);
-    return playerService.getPlayers();
-  }
-
-
   @PutMapping
   public Player putPlayers(@RequestBody Player player) {
     return playerService.updatePlayer(player);
@@ -55,6 +46,7 @@ public class PlayerController {
   @GetMapping
   @RequestMapping("/message")
   public String getPlayerMessage() {
+    log.info("One password {}", password);
     return message;
   }
 

@@ -2,12 +2,10 @@ package ca.gologic.league.team.service;
 
 import ca.gologic.league.team.domain.Player;
 import ca.gologic.league.team.domain.Team;
-import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
 import io.micrometer.observation.Observation;
 import io.micrometer.observation.ObservationRegistry;
 import io.micrometer.observation.contextpropagation.ObservationThreadLocalAccessor;
 import io.micrometer.tracing.Tracer;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 import lombok.extern.slf4j.Slf4j;
@@ -41,7 +39,6 @@ public class TeamService {
         .contextWrite(context -> context.put(ObservationThreadLocalAccessor.KEY, observation));
   }
 
-  @CircuitBreaker(name = "TeamApiCircuitBreaker", fallbackMethod = "fallback")
   public List<Team> getTeams() {
     List<Player> players = playerClient().block();
 
@@ -49,10 +46,5 @@ public class TeamService {
     Team team2 = new Team(2L, "Team Desjardins", players.stream().filter(p -> p.getId().equals(3L) || p.getId().equals(4L)).collect(Collectors.toList()));
 
     return List.of(team1, team2);
-  }
-
-  private List<Team> fallback(Throwable t) {
-    log.info("Circuit breaker OPEN");
-    return List.of(new Team(-1L, "CRICUIT BREAKER", new ArrayList<>()));
   }
 }

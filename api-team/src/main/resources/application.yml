@@ -38,14 +38,3 @@ logging:
     level: '%5p [${spring.application.name:},%X{traceId:-},%X{spanId:-}]'
 
 
-resilience4j.circuitbreaker:
-  configs:
-    default:
-      registerHealthIndicator: true
-      slidingWindowSize: 10
-      minimumNumberOfCalls: 1
-      permittedNumberOfCallsInHalfOpenState: 3
-      automaticTransitionFromOpenToHalfOpenEnabled: true
-      waitDurationInOpenState: 5s
-      failureRateThreshold: 50
-      eventConsumerBufferSize: 10

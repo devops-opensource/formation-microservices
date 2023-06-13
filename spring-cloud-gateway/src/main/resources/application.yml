@@ -13,19 +13,15 @@ spring:
     gateway:
       routes:
         - id: player-api
-          uri: lb://player
+          uri:
           predicates:
-            - Path=/api/v1/player
         - id: team-api
-          uri: lb://team
+          uri:
           predicates:
-            - Path=/api/v1/team
         - id: game-api
-          uri: lb://game
+          uri:
           predicates:
-            - Path=/api/v1/game
-          filters:
-            - AddRequestHeader=X-Request-Game, gameMoreInfo
+
 management:
   endpoint:
     gateway:

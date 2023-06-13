@@ -5,11 +5,6 @@ server:
 spring:
   application:
     name: player
-  security:
-    oauth2:
-      resourceserver:
-        jwt:
-          issuer-uri: https://microservices-learn.us.auth0.com/
   output:
     ansi:
       enabled: always

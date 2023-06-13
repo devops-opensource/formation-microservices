@@ -7,8 +7,4 @@ import org.springframework.web.reactive.function.client.WebClient;
 
 @Configuration
 public class WebclientConfig {
-  @Bean
-  WebClient playerWebClient(WebClient.Builder builder, @Value("${client.player.uri}") String url) {
-    return builder.baseUrl(url).build();
-  }
 }

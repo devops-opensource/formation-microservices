@@ -28,6 +28,7 @@ public class TeamController {
   public List<Team> getPlayers(@RequestHeader(name = "X-Request-Game", defaultValue = "filter failed") String extraInfo) {
     log.info("Get all team instance {}", instanceId);
     log.info("Game obtained a header {} with value {}", "X-Request-Game", extraInfo);
-    return teamService.getTeams();
+
+    return null;
   }
 }
